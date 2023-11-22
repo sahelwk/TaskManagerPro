@@ -1,0 +1,32 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\softDeletes;
+
+class Project extends Model
+{
+    use HasFactory , softDeletes;
+
+   protected $fillable=['dep_id','name'];
+
+    // public function department()
+    // {
+    //     return $this->belongsTo(Department::class, 'dep_id');
+ 
+    public function tasks(){
+
+        return $this->belongsToMany(Task::class);
+    }
+    public function users(){
+
+        return $this->hasMany(User::class);
+    }
+
+    public function departments(){
+        return $this->belongsToMany(Department::class);
+
+    }
+}

@@ -72,8 +72,8 @@ class UserController extends Controller
         // foreach ($users as $user) {
             // Perform your desired operations with each user
             // For example, you can access user properties like $user->name, $user->email, etc.
-            // $users_id= $user->id;
-        // }
+
+        // }     $users_id= $user->id;
         $roles = Role::all();
 
         $projects = Project::all();
@@ -102,22 +102,6 @@ class UserController extends Controller
     $input = $request->all();
     $input['password'] = bcrypt($request->password);
     $user = User::create($input);
-
-    // $admins = User::get();
-
-    // foreach($admins as $admin){
-    //     // $role = $admin->roles->pluck('name')[0] ?? '' ;
-    //     // if($role === 'admin'){
-    //     if($admin->is_admin){
-    //         $notify = [
-    //             "type" => "Create_user",
-    //             "notifiable_type" => "Alert",
-    //             "notifiable_id" => $admin->id,
-    //             "data" => "New user :".$user->name." Created",
-    //         ];
-    //         Notification::create($notify);
-    //     }
-    // }
 
 
 
@@ -179,10 +163,10 @@ class UserController extends Controller
     public function update(Request $request,User $user)
     {
         $request->validate([
-            'org_id' => 'required',
-            'dep_id' => 'required',
+            'organization_id' => 'required',
+            'department_id' => 'required',
             'project_id' => 'required',
-            'tasks_id'   => 'required',
+            'task_id'   => 'required',
             'name' => 'required|string',
             'roles' => 'required',
             'email' => 'required|email',

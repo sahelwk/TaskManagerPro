@@ -15,7 +15,7 @@
             </div>
         </form>
 
-        <h1 class="text-2xl font-bold text-gray-700 mb-4">Permission List</h1>
+        
 
         @if (session('success'))
         <div class="bg-green-100 text-green-700 px-4 py-3 rounded-md mb-4">
@@ -23,23 +23,24 @@
         </div>
         @endif
 
-        <a href="{{ route('permissions.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors duration-200 mb-3">Create Permission</a>
+        <a href="{{ route('permissions.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors duration-200 m-5">Create Permission</a>
 
-        <div class="table-fixed">
-            <table class="w-full">
+        <div class="overflow-x-auto">
+    
+            <table class="min-w-full table-auto border border-gray-300">
                 <thead>
                     <tr>
-                        <th class="py-2">ID</th>
-                        <th class="py-2">Name</th>
-                        <th class="py-2">Actions</th>
+                        <th class="px-4 py-2 bg-gray-200 border-b">ID</th>
+                        <th class="px-4 py-2 bg-gray-200 border-b">Name</th>
+                        <th class="px-4 py-2 bg-gray-200 border-b">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($permissions as $permission)
                     <tr>
-                        <td class="py-2">{{ $loop->iteration }}</td>
-                        <td class="py-2">{{ $permission->name }}</td>
-                        <td class="py-2">
+                        <td class="px-4 py-2">{{ $loop->iteration }}</td>
+                        <td class="px-4 py-2">{{ $permission->name }}</td>
+                        <td class="px-4 py-2">
                             <a href="{{ route('permissions.edit', $permission) }}" class="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600 transition-colors duration-200">Edit</a>
 
                             <form action="{{ route('permissions.destroy', $permission) }}" method="POST" class="inline">

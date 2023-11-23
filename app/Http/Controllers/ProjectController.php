@@ -24,7 +24,7 @@ class ProjectController extends Controller
 
         $projects = Project::when($search, function ($query, $search) {
         return $query->where('name', 'like', "%$search%")
-                     ->orWhere('dep_id' , 'like' , "%$search%");       
+                     ->orWhere('dep_id' , 'like' , "%$search%");
        })->paginate(10);
        return view('projects.index', compact('projects'));
     }
@@ -40,8 +40,8 @@ class ProjectController extends Controller
     {
         // Validate the incoming request data
         $validatedData = $request->validate([
-            'dep_id' => 'nullable|integer',
             'name' => 'required|string',
+            'description' => 'required|string',
         ]);
 
         // Create a new project with the validated data
@@ -64,8 +64,8 @@ class ProjectController extends Controller
     {
         // Validate the incoming request data
         $validatedData = $request->validate([
-            'dep_id' => 'nullable|integer',
             'name' => 'required|string',
+            'description' => 'required|string',
         ]);
 
         // Find the project with the given ID and update its data

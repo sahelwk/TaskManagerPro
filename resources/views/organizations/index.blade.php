@@ -59,10 +59,11 @@
                             <td>{{ $organization->name }}</td>
                             <td>{{ $organization->description }}</td>
                             <td>
-                                @foreach ($organization->departments as $department)
+                                @foreach ($organization_department->departments as $department)
                                     <span class="badge bg-green-500 text-white text-sm">{{ $department->name }}</span>
                                 @endforeach
-                            </td>
+                             
+                            </td> 
                             <td>{{ $organization->created_at->diffForHumans() }}</td>
                             <td>{{ $organization->updated_at->diffForHumans() }}</td>
                             <td>

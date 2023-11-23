@@ -23,6 +23,7 @@ class DepartmentController extends Controller
     public function index(Request $request)
     {
         $search = $request->input('search');
+        $department_organization = Department::with('organizations')->get();
         $departments = Department::when($search , function($query , $search){
             return $query->where('name', 'like' ,"%$search%")
                         ->orWhere('description', 'like', "%$search%");

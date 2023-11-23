@@ -1,13 +1,13 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl leading-tight">
-            {{ __('create role') }}
+            {{ __('Roles') }}
         </h2>
     </x-slot>
 
     <div class="container mx-auto">
         <div class="flex justify-center items-center flex-col">
-            <h1 class="text-3xl font-bold text-gray-800 mb-4">Roles</h1>
+           
             <form action="{{ route('roles.index') }}" method="GET" class="flex justify-center mb-4">
                 <div class="flex">
                     <input type="text" name="search" class="border border-gray-300 rounded-l-md px-3 py-2 focus:outline-none focus:border-blue-500" placeholder="Search">

@@ -21,7 +21,7 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, HasRoles;
     protected $fillable = [ 'name','email','password','role','permission',
-    'org_id','dep_id','task_id','project_id','address',
+    'organization_id','department_id','task_id','project_id','address',
     'photo_id','phone','status','username','last_seen',
     ];
 
@@ -52,10 +52,7 @@ public function photo(){
 
     return $this->belongsTo(Photo::class , 'photo');
 }
-public function roles()
-{
-    return $this->belongsToMany(Role::class);
-}
+
 
 public function getIsAdminAttribute()
 {

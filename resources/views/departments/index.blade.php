@@ -24,12 +24,14 @@
   <!-- <a href="{{ route('departments.create') }}" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded mb-4">
     Create Department
   </a> -->
-  <table class="w-full border-collapse mt-4 border border-gray-200">
+  <div class="overflow-x-auto">
+  <table class="w-full border-collapse mt-4 border border-green-200">
     <thead>
       <tr>
         <th class="border-b-2 border-gray-300 py-2">ID</th>
         <th class="border-b-2 border-gray-300 py-2">Name</th>
         <th class="border-b-2 border-gray-300 py-2">Description</th>
+        <th class=" border-b-2 border-gray-300 py-2">Organizations</th>
         <th class="border-b-2 border-gray-300 py-2">Actions</th>
       </tr>
     </thead>
@@ -39,6 +41,11 @@
           <td class="border-b border-gray-300 py-2">{{ $department->id }}</td>
           <td class="border-b border-gray-300 py-2">{{ $department->name }}</td>
           <td class="border-b border-gray-300 py-2">{{ $department->description }}</td>
+          <td class="border-b border-gray-300 py-2">
+          @foreach ($department_organization->organizations as $organization)
+          <span class="badge bg-green-500 text-white text-sm">{{$organization->name }}</span>
+      @endforeach
+    </td>
           <td class="border-b border-gray-300 py-2">
             <a href="{{ route('departments.show', $department->id) }}" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
               Show
@@ -58,6 +65,7 @@
       @endforeach
     </tbody>
   </table>
+</div>
 </div>
 
 </x-app-layout>

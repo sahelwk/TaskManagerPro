@@ -1,11 +1,11 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl leading-tight">
-            {{ __('project Create') }}
+            {{ __('project Edit') }}
         </h2>
     </x-slot>
     <div class="container mx-auto">
-  <h1 class="text-3xl font-bold text-center mb-8">Edit Project</h1>
+ 
 
   <form action="{{ route('projects.update', $project->id) }}" method="POST" class="max-w-md mx-auto">
     @csrf

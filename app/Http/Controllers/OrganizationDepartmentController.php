@@ -27,8 +27,7 @@ class OrganizationDepartmentController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request){
-
-
+ 
         Organization_department::create($request->all());
         return redirect()->route('organizations.index');
 

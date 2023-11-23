@@ -10,12 +10,12 @@ class Project extends Model
 {
     use HasFactory , softDeletes;
 
-   protected $fillable=['dep_id','name'];
+   protected $fillable=['name','description'];
 
     // public function department()
     // {
     //     return $this->belongsTo(Department::class, 'dep_id');
- 
+
     public function tasks(){
 
         return $this->belongsToMany(Task::class);

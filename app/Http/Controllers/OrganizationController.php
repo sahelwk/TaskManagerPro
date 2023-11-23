@@ -25,7 +25,8 @@ class OrganizationController extends Controller
     {
         $search = $request->input('search');
        $organization_department = Organization::with('departments')->get();
-       $organizations = Organization::when($search, function ($query, $search) {
+       $organizations = Organization::when($search, function ($query, 
+       $search) {
         return $query->where('name', 'like', "%$search%")
             ->orWhere('description', 'like', "%$search%");
     })->paginate(10);
@@ -69,10 +70,12 @@ class OrganizationController extends Controller
     // }
 
 
-    public function show(Organization $organizations)
-{
+    public function show($id)
+{   
     $departments = Department::all();
+   $organizations = Organization::find($id);
     return view('organizations.show', compact('organizations','departments'));
+    
 }
 
 

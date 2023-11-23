@@ -76,17 +76,43 @@
             </x-slot>
 
             <x-slot name="content">
-                <!-- Profile -->
-                <x-dropdown-link
-                    :href="route('profile.edit')"
-                >
-                    {{ __('Profile') }}
-                </x-dropdown-link>
-                <x-dropdown-link
-                :href="route('profile.edit')"
-            >
-                   {{ __('Settings') }}
-            </x-dropdown-link>
+               
+               <x-sidebar.dropdown
+        title="Settings"
+        :active="Str::startsWith(request()->route()->uri(), 'buttons')"
+    >
+    <x-slot name="icon">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H5a2 2 0 00-2 2v10a2 2 0 002 2h4m6-14h4a2 2 0 012 2v10a2 2 0 01-2 2h-4m-6-14v4a2 2 0 002 2h6a2 2 0 002-2V3a2 2 0 00-2-2h-6a2 2 0 00-2 2z" />
+        </svg>
+      </x-slot>
+
+        <!-- Profile -->
+        <x-dropdown-link
+        :href="route('profile.edit')"
+    >
+        {{ __('Profile') }}
+    </x-dropdown-link>
+
+        {{-- <x-sidebar.sublink
+            title="Permistions"
+            href="{{ route('permistions.create') }}"
+            :active="request()->routeIs('permistions.create')"
+        /> --}}
+        <x-dropdown-link
+        :href="route('permissions.index')"
+    >
+        {{ __('Permission') }}
+    </x-dropdown-link>
+    <x-dropdown-link
+    :href="route('roles.index')"
+>
+    {{ __('Roles') }}
+</x-dropdown-link>
+
+    </x-sidebar.dropdown>
+
+
 
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">

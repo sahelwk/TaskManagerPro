@@ -13,6 +13,7 @@ use Spatie\Permission\Contracts\Permission;
 use Spatie\Permission\Models\Permission as ModelsPermission;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\OrganizationDepartmentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TaskUserController;
 use Illuminate\Support\Facades\Auth;
@@ -67,7 +68,7 @@ Route::middleware(['auth'])->group(function () {
 
         Route::post('/mark-as-read', [HomeController::class ,'markNotification'])->name('Admin.markNotification');
             // organization
-        Route::get('/home', [HomeController::class, 'index'])->name('home');
+        Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
         Route::get('/organization/index', [OrganizationController::class, 'index'])->name('organizations.index');
         Route::get('/organization/create', [OrganizationController::class, 'create'])->name('organizations.create');
         Route::post('/organization/store', [OrganizationController::class, 'store'])->name('organizations.store');

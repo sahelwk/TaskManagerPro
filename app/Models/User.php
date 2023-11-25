@@ -34,18 +34,18 @@ class User extends Authenticatable
    }
    public function organization(){
 
-    return $this->belongsTo(Organization::class , 'org_id');
+    return $this->belongsTo(Organization::class , 'organization_id');
 
 }
 public function department(){
 
-    return $this->belongsTo(Department::class , 'dep_id');
+    return $this->belongsTo(Department::class , 'department_id');
 
 }
 
 public function tasks()
 {
-    return $this->belongsToMany(Task::class);
+    return $this->belongsToMany(Task::class,'task_user');
 }
 
 public function photo(){

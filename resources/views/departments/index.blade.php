@@ -42,7 +42,7 @@
           <td class="border-b border-gray-300 py-2">{{ $department->name }}</td>
           <td class="border-b border-gray-300 py-2">{{ $department->description }}</td>
           <td class="border-b border-gray-300 py-2">
-          @foreach ($department_organization->organizations as $organization)
+          @foreach ($department->organizations as $organization)
           <span class="badge bg-green-500 text-white text-sm">{{$organization->name }}</span>
       @endforeach
     </td>

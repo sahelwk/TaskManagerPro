@@ -13,7 +13,7 @@ class Department extends Model
 
     public function organizations()
     {
-        return $this->belongsToMany(Organization::class);
+        return $this->belongsToMany(Organization::class,'department_organization');
     }
 
     // public function projects()
@@ -26,6 +26,6 @@ class Department extends Model
     }
     public function projects(){
 
-        return $this->belongsToMany(Project::class);
+        return $this->belongsToMany(Project::class,'department_projects');
     }
 }

@@ -12,9 +12,34 @@
         href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet" />
 
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        
+        <link rel ="stylesheet" type ="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type = "text/javascript" href = "https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.js.map"> </script>
+    <script>
+    @if ( Session :: has ( ' message ' ) ) 
+    var type = " { { Session :: get ( ' alert - type ' , ' info ' ) } } "
+     switch ( type ) {
+     case ' info ' :
+     toastr.info ( " { { Session :: get ( ' message ' ) } } " ) ; 
+     break ;
+      case ' success ' :
+    toastr.success ( " { { Session :: get ( ' message ' ) } } " ) ;
+      break ;
+       case ' warning ' :
+         toastr.warning ( " { { Session :: get ( ' message ' ) } } " ) ;
+          break ;
+           case ' error ' :
+             toastr.error ( " { { Session :: get ( ' message ' ) } } " ) ;
+              break ;
+           }
+              @endif
+
+</script>  
+    
     <!-- Styles -->
+
     <style>
         [x-cloak] {
             display: none;
@@ -66,5 +91,8 @@
             </div>
         </div>
     </div>
-</body>
+  
+   
+    </body>
+
 </html>

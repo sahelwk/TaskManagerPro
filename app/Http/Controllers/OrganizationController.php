@@ -24,14 +24,13 @@ class OrganizationController extends Controller
 
     {
         $search = $request->input('search');
-       $organization_department = Organization::with('departments')->get();
-       $organizations = Organization::when($search, function ($query, 
-       $search) {
+       $organization = Organization::with('departments')->get();
+       $organizations = Organization::when($search, function ($query, $search) {
         return $query->where('name', 'like', "%$search%")
             ->orWhere('description', 'like', "%$search%");
-    })->paginate(10);
+    })->paginate(4);
 
-          return view('organizations.index',compact('organizations','organization_department'));
+          return view('organizations.index',compact('organizations','organization'));
 
     }
 
@@ -55,7 +54,12 @@ class OrganizationController extends Controller
         ]);
 
         Organization::create($validatedData);
-        return redirect()->route('organizations.index')->with('success', 'Action successfully done');
+        $notification = array
+        (
+         'message'=>' orgianizatin created successfullry',
+         'alirt-type' => 'success'
+        );
+        return redirect()->route('organizations.index')->with($notification);
     }
 
     /**

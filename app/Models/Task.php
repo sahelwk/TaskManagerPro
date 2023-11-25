@@ -17,10 +17,10 @@ class Task extends Model
     // }
     public function users()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class,'task_user');
     }
     public function projects(){
-        return $this->belongsToMany(Project::class);
+        return $this->belongsToMany(Project::class,'task_projects');
     }
 
 

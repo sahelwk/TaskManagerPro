@@ -22,7 +22,7 @@ use Illuminate\Database\Eloquent\softDeletes;
     }
     public function departments(){
 
-        return $this->belongsToMany(Department::class);
+        return $this->belongsToMany(Department::class, 'department_organization');
     }
 }
 

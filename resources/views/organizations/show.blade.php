@@ -1,59 +1,78 @@
-
+ 
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl leading-tight">
-            {{ __('Orgnization Show') }}
+            {{ __('Department Details') }}
         </h2>
     </x-slot>
-<div class="container pb-5">
-    <div class="text-center">
-         
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">
-                    <strong>Organization ID:</strong>
-                    <span class="badge  text-sm ml-2">{{ $organizations->id }}</span>
-                </h5>
-                <p class="card-text">
-                    <strong>Organization Name:</strong>
-                    <span class="badge  text-sm ml-2">{{ $organizations->name }}</span>
-                </p>
-                <p class="card-text">
-                    <strong>Organization Description:</strong>
-                    <span class="badge  text-sm ml-2">{{ $organizations->description }}</span>
-                </p>
-            </div>
-        </div>
-    </div>
+ 
+ 
+ <div class="grid grid-cols-2 grid-rows-1 gap-3">
+ <div class="bg-white rounded-lg shadow-lg py-2 px-2 mb-8 border-2 border-gray-300">
+  <div class="overflow-x-auto">
+ <table class="table-auto">
+     <thead>
+           <tr>
+  <th class="px-6 py-6 bg-green-50 text-left text-xs font-midium text-gray-500 uppercase tacking-winder ">Id</th> 
+  <th class="px-6 py-6 bg-green-50 text-left text-xs font-midium text-gray-500 uppercase tacking-winder ">Name</th> 
+  <th class="px-6 py-6 bg-green-50 text-left text-xs font-midium text-gray-500 uppercase tacking-winder">Description</th> 
+  <th class="px-6 py-6 bg-green-50 text-left text-xs font-midium text-gray-500 uppercase tacking-winder">Created</th>
+  <th class="px-6 py-6 bg-green-50 text-left text-xs font-midium text-gray-500 uppercase tacking-winder">Updated</th> 
+           </tr>
+   </thead>
+    <tbody class="bg-white divide-y divide-green-300">
+           <tr>
+            <td class="px-6 py-4 whitespace-nowrap">
+            <span class="inline-block bg-blue-500 text-white text-sm font-light py-1 px-2 rounded-lg ml-2">{{ $organizations->id }}</span>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap">
+            <span class="inline-block bg-blue-500 text-white text-sm font-light py-1 px-2 rounded-lg ml-2">{{ $organizations->name }}</span>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap">
+            <span class="inline-block bg-blue-500 text-white text-sm font-light py-1 px-2 rounded-lg ml-2">{{ $organizations->description }}</span>
+            </td>
+             <td class="px-6 py-4 whitespace-nowrap"> 
+                 {{ $organizations->created_at->diffForHumans()}} 
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap"> 
+                  {{ $organizations->updated_at->diffForHumans()}}
+                </td>
 
-    <div class="flex justify-center mt-8">
-        <a href="{{ route('organizations.index') }}" class="btn bg-blue-500 hover:btn-blue-700 text-white font-bold rounded py-2 px-2">Back to Organizations</a>
-    </div>
-
-    <div class="flex justify-center mt-12">
-        <form method="post" action="{{ route('department_organization.store') }}">
+        </tr>
+     </tbody>
+  </table>
+</div>
+  <a href="{{route('departments.index') }}" class = "bg-green-300 hover:bg-green-500 text-white font-bold mt-5 py-2 px-4 rounded block w-40 mx-auto text-center mb-4">Back</a>
+</div> 
+       <div class= "bg-white rounded-lg shadow-lg py-2 px-2 mb-8 ">
+       <form method="post" action="{{ route('department_organization.store') }}">
             @csrf
+            <h1 class="font-semibold text-xl leading-tight mb-5" > Assign department to organization </h1>
+
+         
+            <select name="department_id" class="block w-full px-4 py-2 pr-8 leading-tight text-gray-700 bg-green-300 border berder-gray-300 rounded-md focus-outline-none focus-bg-white focus-border-gray-500">
+            <option selected> select organization</option>
             @foreach ($departments as $department)
-                <div class="flex items-center mb-2">
-                    <input
-                        id="user-{{ $department->id }}"
-                        type="radio"
-                        name="department_id"
-                        value="{{ $department->id }}"
-                        class="form-radio-input"
-                    >
-                    <label for="user-{{ $department->id }}" class="form-radio-label ml-2">
+       
+            <option  value="{{ $department->id }}">    
                         {{ $department->name }}
-                    </label>
                 </div>
-                @endforeach
-                <input type="hidden" name="organization_id" value="{{ $organizations->id }}">
+             
+           
+              </select>
+              @endforeach
+              <input type="hidden" name="organization_id" value="{{ $organizations->id }}">
 
             <div class="flex justify-center">
-                <button type="submit" class="btn bg-green-500 hover:bg-green-700 font-bold text-white rounded py-2 px-2">Add Departments to This Organization</button>
+                <button type="submit" class="btn bg-green-500 hover:bg-green-700 font-bold text-white rounded py-2 px-2 mt-5">Assign</button>
             </div>
         </form>
-    </div>
-</div>
+      </div>
 
+ </div>
+ 
+   
 </x-app-layout>
+
+
+

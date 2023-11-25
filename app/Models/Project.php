@@ -18,7 +18,7 @@ class Project extends Model
 
     public function tasks(){
 
-        return $this->belongsToMany(Task::class);
+        return $this->belongsToMany(Task::class,'task_projects');
     }
     public function users(){
 
@@ -26,7 +26,7 @@ class Project extends Model
     }
 
     public function departments(){
-        return $this->belongsToMany(Department::class);
+        return $this->belongsToMany(Department::class , 'department_projects');
 
     }
 }

@@ -23,13 +23,13 @@ class DepartmentController extends Controller
     public function index(Request $request)
     {
         $search = $request->input('search');
-        $department_organization = Department::with('organizations')->get();
+        $department = Department::with('organizations')->get();
         $departments = Department::when($search , function($query , $search){
             return $query->where('name', 'like' ,"%$search%")
                         ->orWhere('description', 'like', "%$search%");
 
-        })->paginate(6);
-        return view('departments.index', compact('departments'));
+        })->paginate(4);
+        return view('departments.index', compact('departments','department'));
     }
 
 
@@ -76,9 +76,9 @@ class DepartmentController extends Controller
      */
     public function show($id)
     {
-        $organizations = Organization::get();
+        $organization = Organization::with('departments')->get();
         $department = Department::find($id);
-        return view('departments.show', compact('department','organizations'));
+        return view('departments.show', compact('department','organization'));
     }
 
     /**

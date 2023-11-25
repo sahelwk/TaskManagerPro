@@ -60,11 +60,11 @@ require __DIR__ . '/auth.php';
 
 // Auth::routes(['Auth']);
 Route::middleware(['auth'])->group(function () {
-        Route::post('/org_dep', [OrganizationDepartmentController::class ,'store'])->name('department_organization.store');
-        Route::get('/reports', [ReportController::class ,'index'])->name('reports.index');
-        Route::get('/reports/generateReport', [ReportController::class ,'generateReport'])->name('reports.generateReport');
-        Route::get('/reports/create', [ReportController::class ,'create'])->name('reports.create');
-        Route::post('/reports/store', [ReportController::class ,'store'])->name('reports.store');
+        // Route::post('/org_dep', [OrganizationDepartmentController::class ,'store'])->name('department_organization.store');
+        // Route::get('/reports', [ReportController::class ,'index'])->name('reports.index');
+        // Route::get('/reports/generateReport', [ReportController::class ,'generateReport'])->name('reports.generateReport');
+        // Route::get('/reports/create', [ReportController::class ,'create'])->name('reports.create');
+        // Route::post('/reports/store', [ReportController::class ,'store'])->name('reports.store');
 
         Route::post('/mark-as-read', [HomeController::class ,'markNotification'])->name('Admin.markNotification');
             // organization
@@ -134,5 +134,13 @@ Route::middleware(['auth'])->group(function () {
         Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
         Route::delete('/users/{user}', [UserController::class, 'delete'])->name('users.delete');
         Route::post('task_assign',[TaskUserController::class,'store'])->name('taskAssign.store');
+       //reports
+
+
+       Route::get('/reports', [ReportController::class, 'index'])->name('reports.index');
+       Route::get('/reports/search', [ReportController::class, 'search'])->name('reports.search');
+
+
+
 
 });

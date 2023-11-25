@@ -15,7 +15,7 @@
             </div>
         </form>
 
-        
+
 
         @if (session('success'))
         <div class="bg-green-100 text-green-700 px-4 py-3 rounded-md mb-4">
@@ -23,24 +23,23 @@
         </div>
         @endif
 
-        <a href="{{ route('permissions.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors duration-200 m-5">Create Permission</a>
+        <a href="{{ route('permissions.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors duration-200 mb-5">Create Permission</a>
 
-        <div class="overflow-x-auto">
-    
-            <table class="min-w-full table-auto border border-gray-300">
+        <div class="overflow-x-auto mt-5">
+            <table class="min-w-full table-auto border border-gray-300 ">
                 <thead>
-                    <tr>
-                        <th class="px-4 py-2 bg-gray-200 border-b">ID</th>
-                        <th class="px-4 py-2 bg-gray-200 border-b">Name</th>
-                        <th class="px-4 py-2 bg-gray-200 border-b">Actions</th>
+                    <tr class="text-center bg-gray-50 text-black font-bold font-italic space-y-4">
+                        <th class="px-4 py-2 bg-gray-200 border-b w-1/4">ID</th>
+                        <th class="px-4 py-2 bg-gray-200 border-b w-1/4">Name</th>
+                        <th class="px-4 py-2 bg-gray-200 border-b w-1/4 ">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($permissions as $permission)
-                    <tr>
-                        <td class="px-4 py-2">{{ $loop->iteration }}</td>
-                        <td class="px-4 py-2">{{ $permission->name }}</td>
-                        <td class="px-4 py-2">
+                    <tr class="text-center bg-gray-100 text-black space-y-4">
+                        <td class="px-4 py-2 w-1/4">{{ $loop->iteration }}</td>
+                        <td class="px-4 py-2 w-1/4">{{ $permission->name }}</td>
+                        <td class="px-4 py-2 w-1/4">
                             <a href="{{ route('permissions.edit', $permission) }}" class="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600 transition-colors duration-200">Edit</a>
 
                             <form action="{{ route('permissions.destroy', $permission) }}" method="POST" class="inline">

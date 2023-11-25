@@ -24,5 +24,14 @@ use Illuminate\Database\Eloquent\softDeletes;
 
         return $this->belongsToMany(Department::class, 'department_organization');
     }
+
+    public function scopeOfName($query,$name)
+    {
+        if(isset($name)){
+
+            return $query->where('name', 'like', '%'.$name.'%');
+        }
+        return $query;
+    }
 }
 

@@ -22,11 +22,11 @@
                 <div class="grid grid-cols-2 gap-4">
                     <div>
                         <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
-                        <input type="text" class="form-input mt-1 block w-full" id="name" name="name" required placeholder="Enter the name">
+                        <input type="text" class="block w-full px-4 py-2 pr-8 leading-tight text-gray-700 bg-gray-200 border berder-gray-300 rounded-md focus-outline-none focus-bg-white focus-border-gray-500" id="name" name="name" required placeholder="Enter the name">
                     </div>
                     <div>
                         <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
-                        <input type="text" class="form-input mt-1 block w-full" id="description" name="description" required placeholder="Description">
+                        <input type="text" class="block w-full px-4 py-2 pr-8 leading-tight text-gray-700 bg-gray-200 border berder-gray-300 rounded-md focus-outline-none focus-bg-white focus-border-gray-500" id="description" name="description" required placeholder="Description">
                     </div>
                 </div>
                 <div class="mt-4">

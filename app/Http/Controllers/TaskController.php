@@ -57,6 +57,13 @@ class TaskController extends Controller
         ]);
 
         // Create a new task with the validated data
+       $status = $request->input('status');
+
+        if($status == 0)
+         {
+            return redirect()->route('tasks.create')->with('success', 'select the status please.');
+         }
+
 
         Task::create($validatedData);
 
@@ -66,10 +73,12 @@ class TaskController extends Controller
         return redirect()->route('tasks.index')->with('success', 'Task created successfully.');
     }
 
-    public function edit(Task $task)
+    public function edit($id)
 
 
     {
+
+        $task = Task::find($id);
 
         // Render the edit view with the specified task
         return view('tasks.edit', compact('task'));

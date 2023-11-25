@@ -38,50 +38,52 @@
         @endif
 
         <div class="overflow-x-auto mt-5">
-            <table class="table table-fixed w-full  border border-gray-200">
+            <div class="overflow-x-auto">
+            <table class="table table-fixed w-full  border border-gray-300 table-auto">
                 <thead>
-                    <tr class="text-center bg-gray-500 text-white">
-                        <th class="w-1/12">#</th>
-                        <th class="w-2/12">Name</th>
-                        <th class="w-3/12">Description</th>
-                        <th class="w-2/12">Departments of organization</th>
-                        <th class="w-1/12">Created at</th>
-                        <th class="w-1/12">Updated at</th>
-                        <th class="w-1/12">Show</th>
-                        <th class="w-1/12">Edit</th>
-                        <th class="w-1/12">Delete</th>
+                    <tr class="text-center bg-gray-500 text-white space-y-4">
+                        <th class="w-1/12 py-2 px-3">#</th>
+                        <th class="w-2/12 py-2 px-3">Name</th>
+                        <th class="w-3/12 py-2 px-3">Description</th>
+                        <th class="w-2/12 py-2 px-3">Departments of organization</th>
+                        <th class="w-1/12 py-2 px-3">Created at</th>
+                        <th class="w-1/12 py-2 px-3">Updated at</th>
+                        <th class="w-1/12 py-2 px-3">Show</th>
+                        <th class="w-1/12 py-2 px-3">Edit</th>
+                        <th class="w-1/12 py-2 px-3">Delete</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($organizations as $organization)
-                        <tr>
-                            <td>{{ $organization->id }}</td>
-                            <td>{{ $organization->name }}</td>
-                            <td>{{ $organization->description }}</td>
-                            <td>
+                        <tr class="space-y-4">
+                            <td class="py-2 px-3">{{ $organization->id }}</td>
+                            <td class="py-2 px-3">{{ $organization->name }}</td>
+                            <td class="py-2 px-3">{{ $organization->description }}</td>
+                            <td class="py-2 px-3">
                     @foreach ($organization->departments as $department)
-                        <span class="badge bg-green-500 text-white text-sm">{{ $department->name }}</span>
+                        <span class="py-2 px-2 rounded badge bg-green-500 text-white text-sm">{{ $department->name }}</span>
                     @endforeach
-                    
-                            </td> 
-                            <td>{{ $organization->created_at->diffForHumans() }}</td>
-                            <td>{{ $organization->updated_at->diffForHumans() }}</td>
-                            <td>
-                                <a href="{{ route('organizations.show', $organization->id) }}" class="btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Show</a>
+
                             </td>
-                            <td>
-                                <a href="{{ route('organizations.edit', $organization->id) }}" class="btn bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded mb-2">Edit</a>
+                            <td class="py-2 px-3">{{ $organization->created_at->diffForHumans() }}</td>
+                            <td class="py-2 px-3">{{ $organization->updated_at->diffForHumans() }}</td>
+                            <td class="py-2 px-3">
+                                <a href="{{ route('organizations.show', $organization->id) }}" class="py-4 px-6btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Show</a>
                             </td>
-                            <td>
-                                <a href="{{ route('organizations.delete', $organization->id) }}" class="btn bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded mb-2">Delete</a>
+                            <td class="py-2 px-3">
+                                <a href="{{ route('organizations.edit', $organization->id) }}" class="py-4 px-6btn bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded mb-2">Edit</a>
+                            </td>
+                            <td class="py-2 px-3">
+                                <a href="{{ route('organizations.delete', $organization->id) }}" class="py-4 px-6btn bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded mb-2">Delete</a>
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
+            </div>
         </div>
 
-        <div class="mt-4">
+        <div class="py-4 px-6 mt-4">
             {{ $organizations->links() }}
         </div>
     </div>

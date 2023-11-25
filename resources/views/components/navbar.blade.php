@@ -76,7 +76,13 @@
             </x-slot>
 
             <x-slot name="content">
-               
+  <!-- Profile -->
+  <x-dropdown-link
+  :href="route('profile.edit')"
+>
+  {{ __('Profile') }}
+</x-dropdown-link>
+
                <x-sidebar.dropdown
         title="Settings"
         :active="Str::startsWith(request()->route()->uri(), 'buttons')"
@@ -87,18 +93,7 @@
         </svg>
       </x-slot>
 
-        <!-- Profile -->
-        <x-dropdown-link
-        :href="route('profile.edit')"
-    >
-        {{ __('Profile') }}
-    </x-dropdown-link>
 
-        {{-- <x-sidebar.sublink
-            title="Permistions"
-            href="{{ route('permistions.create') }}"
-            :active="request()->routeIs('permistions.create')"
-        /> --}}
         <x-dropdown-link
         :href="route('permissions.index')"
     >
